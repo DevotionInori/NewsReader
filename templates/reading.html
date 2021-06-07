@@ -8,41 +8,50 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript">
+        function f(form) {
+            if($(#area).val() === "")
+            {
+                alert("内容不能为空");
+                return false;
+            }
+            else
+                return true;
+        }
+    </script>
 </head>
-<body>
+
+
+<body >
 
 <div class="container-fluid">
-    <header class="mb-5">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">NewsReader</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"> </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="/">Home</a>
-                        <a class="nav-link  active"  aria-current="page" href="reading">Reading</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+    <header class="d-flex justify-content-center py-3 border-bottom">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="reading">Reading</a>
+            </li>
+        </ul>
     </header>
-    <div class="container-sm">
-        <div class="row align-items-start">
-            <div class="col-4">
+    <div class="container-sm py-3">
+        <div class="row justify-content-evenly">
+            <div class="col-4" style="max-width: 400px">
                 <form>
                     <div class="input-group mt mb-1">
                         <span class="input-group-text">新闻文本</span>
-                        <textarea class="form-control" aria-label="With textarea" style="height: 300px" name="news_content"> </textarea>
+                        <textarea required class="form-control" aria-label="With textarea" style="height: 300px" name="news_content"> </textarea>
                     </div>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary" type="submit">开始阅读</button>
+                        <button id="btn" class="btn btn-primary" type="submit">开始阅读</button>
                     </div>
                 </form>
             </div>
-            <div class="col-6" >
-                <div style="align-content: center;margin-left: 200px;max-width: 400px">
+            <div class="col-4" style="max-width: 400px">
+                <div style="align-content: center;max-width: 400px">
                     {% if resultList != None %}
                         <div id="carouselExampleControls" class="carousel slide " data-bs-interval="false">
                             <div class="carousel-inner">
@@ -51,7 +60,7 @@
                                         <div class="card carousel-item active">
                                             <img src="{{imgcontent.0}}" class="card-img-top"/>
                                             <div class="card-body">
-                                                <p class="card-text">{{imgcontent.1}}。</p>
+                                                <p class="card-text">{{imgcontent.1}}</p>
                                                 {% if index == 0 %}
                                                     <button type="button" class="btn btn-primary" style="transition: opacity 0.15s ease" data-bs-target="#carouselExampleControls" data-bs-slide="prev" disabled>Previous</button>
                                                     <button type="button" class="btn btn-primary" style="transition: opacity 0.15s ease" data-bs-target="#carouselExampleControls" data-bs-slide="next">Next</button>
@@ -68,7 +77,7 @@
                                         <div class="card carousel-item">
                                             <img src="{{imgcontent.0}}" class="card-img-top"/>
                                             <div class="card-body">
-                                                <p class="card-text">{{imgcontent.1}}。</p>
+                                                <p class="card-text">{{imgcontent.1}}</p>
                                                 {% if index == 0 %}
                                                     <button type="button" class="btn btn-primary" style="transition: opacity 0.15s ease" data-bs-target="#carouselExampleControls" data-bs-slide="prev" disabled>Previous</button>
                                                     <button type="button" class="btn btn-primary" style="transition: opacity 0.15s ease" data-bs-target="#carouselExampleControls" data-bs-slide="next">Next</button>
